@@ -16,7 +16,7 @@ class DeliversService {
 
     getDelivers = async () => {
 
-        const deliversReference = db.collection('bots');
+        const deliversReference = db.collection('delivers');
         const documentSnapshop = await deliversReference.get();
         const delivers = documentSnapshop.docs.map(doc => doc.data());
 
