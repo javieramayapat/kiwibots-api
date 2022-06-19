@@ -1,16 +1,15 @@
-const { Router } = require("express");
-
 const admin = require("firebase-admin");
 const db = admin.firestore();
 
 
-class BotsService {
+export class BotsService {
 
     constructor(
-        public state: string,
-        public lat: number,
-        public lon: number,
-        public zone_id: string
+        public id?: string,
+        public state?: string,
+        public lat?: number,
+        public lon?: number,
+        public zone_id?: string
     ) { }
 
 
@@ -25,5 +24,3 @@ class BotsService {
     }
 
 }
-
-module.exports = BotsService;

@@ -4,13 +4,17 @@ const admin = require("firebase-admin");
 const db = admin.firestore();
 
 
-class DeliversService {
+export class DeliversService {
 
     constructor(
-        public state: string,
-        public lat: number,
-        public lon: number,
-        public zone_id: string
+        public id?: string,
+        public creation_date?: Date,
+        public state?: string,
+        public lat?: number,
+        public lon?: number,
+        public user_id?: string,
+        public zone_id?: string,
+        public bot_id?: string,
     ) { }
 
 
@@ -34,6 +38,3 @@ class DeliversService {
 
 
 }
-
-
-module.exports = DeliversService;
