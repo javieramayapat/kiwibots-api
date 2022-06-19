@@ -1,7 +1,6 @@
 import * as functions from "firebase-functions";
 import * as express from "express";
 import * as cors from "cors";
-const config = require('./config.js');
 
 
 const admin = require("firebase-admin");
@@ -15,27 +14,14 @@ admin.initializeApp({
   databaseURL: `${DATABASE_URL}`
 });
 
-// db is a reference to y database using the credentials we config 
-const db = admin.firestore();
-
-
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.json({
-    message: 'Hello World from kiwibots!'
-  });
-});
 
 // Express and cors configuration to recive request in a open way
 const app = express();
 app.use(cors({ origin: true }));
 
-
-app.get("/index", async (request, response) => {
-  response.json({
-    message: 'Hello World from Express!'
-  })
-});
-
+// Routes
+app.use(require("./routes/bots.routes"));
+app.use(require("./routes/delivers.routes"));
 
 // Indicates firebase that has a express server running 
 export const api = functions.https.onRequest(app);
