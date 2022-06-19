@@ -24,6 +24,14 @@ class DeliversService {
 
     }
 
+    getDeliverById = async (id: number) => {
+        const deliversReference = db.collection('delivers').where('id', '==', id);
+        const documentSnapshop = await deliversReference.get();
+        const deliver = documentSnapshop.docs.map(doc => doc.data());
+
+        return deliver
+    }
+
 
 }
 

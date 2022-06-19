@@ -19,7 +19,6 @@ class BotsService {
         const botsReference = db.collection('bots').where('zone_id', '==', zone_id);
         const documentSnapshop = await botsReference.get();
         const bots = documentSnapshop.docs.map(doc => doc.data());
-        console.log(bots)
 
         return bots
 

@@ -18,5 +18,16 @@ router.get("/v1/delivers", async (request, response) => {
 
 });
 
+router.get("/v1/delivers/:id", async (request, response) => {
+    try {
+        const id = request.params.id;
+        const deliver = await service.getDeliverById(id);
+        response.status(200).json(deliver)
+
+    } catch (error) {
+        return response.status(500).send(error)
+    }
+})
+
 
 module.exports = router;
