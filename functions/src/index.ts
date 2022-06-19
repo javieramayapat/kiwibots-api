@@ -1,6 +1,5 @@
 import * as functions from "firebase-functions";
-import * as express from "express";
-import * as cors from "cors";
+import app from "./app"
 
 
 const admin = require("firebase-admin");
@@ -13,11 +12,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: `${DATABASE_URL}`
 });
-
-
-// Express and cors configuration to recive request in a open way
-const app = express();
-app.use(cors({ origin: true }));
 
 // Routes
 app.use(require("./routes/bots.routes"));
